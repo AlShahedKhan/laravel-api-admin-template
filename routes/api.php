@@ -2,7 +2,9 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\RoleController;
+use App\Http\Controllers\UserController;
 use App\Http\Controllers\Api\ApiController;
+use App\Http\Controllers\PermissionController;
 
 // Open Routes
 Route::post("register", [ApiController::class, "register"]);
@@ -18,6 +20,8 @@ Route::group([
     Route::get("profile", [ApiController::class, "profile"]);
     Route::get("refresh-token", [ApiController::class, "refreshToken"]);
     Route::get("logout", [ApiController::class, "logout"]);
+    Route::apiResource('users', UserController::class);
 });
 
-Route::resource('roles', RoleController::class);
+Route::apiResource('roles', RoleController::class);
+Route::apiResource('permissions', PermissionController::class);
